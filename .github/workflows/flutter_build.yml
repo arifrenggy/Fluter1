@@ -16,7 +16,7 @@ jobs:
     - name: Set up Flutter
       uses: subosito/flutter-action@v2
       with:
-        flutter-version: '3.x' # Use the latest stable version of Flutter 3
+        flutter-version: '3.x'
         channel: 'stable'
 
     - name: Install dependencies
@@ -29,4 +29,12 @@ jobs:
       run: flutter test
 
     - name: Build Android APK
-      run: flutter build apk --debug # Building debug APK for faster build and demonstration
+      run: flutter build apk --debug
+
+    # --- TAMBAHKAN BAGIAN INI ---
+    - name: Upload APK ke Artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: flutter-app-debug
+        path: build/app/outputs/flutter-apk/app-debug.apk
+        
